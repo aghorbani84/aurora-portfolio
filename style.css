@@ -1,0 +1,169 @@
+/* AURORA portfolio — single page, vanilla CSS, no external resources.
+   Proportion system: phi = 1.618. Spacing scale built from phi powers.
+   Colours: dark neutral surfaces, one restrained gold accent.
+   Contrast: body text #e9e7e2 on #171716 ~ 13.5:1; gold #cfa14e on
+   #171716 ~ 6.4:1; muted #a8a49b on #171716 ~ 6.9:1. */
+
+:root {
+  --phi: 1.618;
+  --s-382: 0.382rem;
+  --s-618: 0.618rem;
+  --s-1: 1rem;
+  --s-1618: 1.618rem;
+  --s-2618: 2.618rem;
+  --s-4236: 4.236rem;
+  --measure: 61.8rem;          /* 100 / phi, the content column */
+  --measure-text: 38.2rem;     /* 61.8 / phi, the reading column */
+  --bg: #171716;
+  --surface: #1f1f1d;
+  --surface-2: #262622;
+  --line: #3a3a35;
+  --text: #e9e7e2;
+  --muted: #a8a49b;
+  --gold: #cfa14e;
+  --gold-soft: #8a6d2f;
+  --radius: var(--s-618);
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.618;
+  -webkit-text-size-adjust: 100%;
+}
+
+a { color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+a:hover, a:focus-visible { color: #e3bd6d; }
+a:focus-visible, video:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+h1, h2, h3 { line-height: 1.236; margin: 0; font-weight: 650; letter-spacing: -0.01em; }
+h1 { font-size: 2.618rem; }
+h2 { font-size: 1.618rem; margin-bottom: var(--s-618); }
+h3 { font-size: 1.236rem; }
+p { margin: 0 0 var(--s-1); }
+p:last-child { margin-bottom: 0; }
+
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 var(--s-1618); }
+section { padding: var(--s-2618) 0; }
+section + section { border-top: 1px solid var(--line); }
+
+.lede { color: var(--muted); font-size: 1.236rem; line-height: 1.5; max-width: var(--measure-text); }
+.section-intro { color: var(--muted); max-width: var(--measure-text); margin-bottom: var(--s-1618); }
+
+/* Header */
+header.site { padding: var(--s-4236) 0 var(--s-2618); border-bottom: 1px solid var(--line); }
+.eyebrow {
+  color: var(--gold);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 var(--s-618);
+}
+header.site h1 span { color: var(--gold); font-weight: 650; }
+
+/* Badges — every sample is labelled, no exceptions */
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #171716;
+  background: var(--gold);
+  border-radius: 999px;
+  padding: var(--s-382) var(--s-618);
+  margin-bottom: var(--s-618);
+}
+.badge-outline {
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold-soft);
+}
+.brand-note { color: var(--muted); font-size: 0.9375rem; }
+
+/* Services */
+.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-1618); }
+.service {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s-1618);
+}
+.service h3 { color: var(--gold); margin-bottom: var(--s-618); }
+.service p { color: var(--muted); margin: 0; }
+
+/* Samples */
+.sample { margin-bottom: var(--s-4236); }
+.sample:last-child { margin-bottom: 0; }
+.sample > h3 { margin-bottom: var(--s-382); }
+.sample .meta { color: var(--muted); font-size: 0.9375rem; margin-bottom: var(--s-1618); }
+.sample .meta:last-child { margin-bottom: 0; }
+
+figure { margin: 0 0 var(--s-1618); }
+figure:last-child { margin-bottom: 0; }
+figcaption { color: var(--muted); font-size: 0.9375rem; margin-top: var(--s-618); }
+
+video, img { display: block; max-width: 100%; height: auto; border-radius: var(--radius); }
+video { width: 100%; background: #000; aspect-ratio: 16 / 9; }
+img { background: var(--surface-2); }
+
+.script-link { font-size: 0.9375rem; }
+
+/* Carousels — the two Kiln & Co sets are visually distinct */
+.carousel-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-1618); }
+.carousel-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s-618); }
+.stories { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-1618); max-width: 46.9rem; }
+.stories img { aspect-ratio: 9 / 16; object-fit: cover; }
+.set-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 var(--s-618);
+}
+.divider-sets { border-top: 1px dashed var(--line); margin: var(--s-2618) 0; padding-top: var(--s-1618); }
+
+/* SEO article — rendered in full, readable measure */
+.article {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s-2618);
+}
+.article .article-body { max-width: var(--measure-text); }
+.article h3 { font-size: 1.618rem; margin-bottom: var(--s-382); }
+.article .article-meta { color: var(--muted); font-size: 0.9375rem; margin-bottom: var(--s-1618); }
+.article h4 { font-size: 1.236rem; margin: var(--s-1618) 0 var(--s-382); line-height: 1.382; }
+.article p { color: #d8d5cf; }
+
+/* Contact + footer */
+.contact .email { font-size: 1.236rem; }
+footer.site {
+  border-top: 1px solid var(--line);
+  padding: var(--s-1618) 0 var(--s-2618);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+/* Responsive — phi-based breakpoints */
+@media (max-width: 61.8rem) {
+  .services { grid-template-columns: 1fr; }
+  .carousel-5 { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 38.2rem) {
+  h1 { font-size: 1.933rem; }
+  .carousel-3, .stories { grid-template-columns: 1fr; }
+  .carousel-5 { grid-template-columns: repeat(2, 1fr); }
+  .article { padding: var(--s-1618); }
+  section { padding: var(--s-1618) 0; }
+}
